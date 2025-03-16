@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MoneyFlow - Seu aplicativo de finanças pessoais">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../styles/base.css">
+    <link rel="stylesheet" href="../styles/loginPage.css">
+    <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
+    <title>MoneyFlow | Login</title>
+</head>
+<body class="bg-darker d-flex justify-content-center align-items-center vh-100">
+    <main class="mainContent leftRadius rightRadius bg-light shadow overflow-hidden">
+        <div class="row h-100 m-0 ">
+            <div class="col-md-8 d-none d-md-flex brand-section">
+                <div class="container d-flex flex-column justify-content-center align-items-center h-100">
+                    <div class="brand-content text-center">
+                        <h1 class="display-4 fw-bold">MoneyFlow</h1>
+                        <h2 class="fs-3">O seu aplicativo de finanças</h2>
+                        <div id="featureCarousel" class="carousel slide mt-4" data-bs-ride="carousel" data-bs-interval="1500">
+                            <div class="carousel-inner rounded shadow">
+                                <div class="carousel-item active p-4 bg-white bg-opacity-75">
+                                    <div class="d-flex flex-column align-items-center">
+                                        <h1>Seguro</h1>
+                                    </div>
+                                </div>
+                                <div class="carousel-item p-4 bg-white bg-opacity-75">
+                                    <div class="d-flex flex-column align-items-center">
+                                        <h1>Confiavel</h1>
+                                    </div>
+                                </div>
+                                <div class="carousel-item p-4 bg-white bg-opacity-75">
+                                    <div class="d-flex flex-column align-items-center">
+                                        <h1>Simples</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-white pb-3 pb-md-5 text-center col-12 col-md-4 bigBlock bg-dark rightRadius">
+                <div class="form-group p-3 p-md-4 p-lg-5 mt-3 mt-md-5" id="logUp">
+                    <h1 class="mb-3 mb-md-4 fw-bold fs-2">Bem vindo de volta!</h1>
+                    <h2 class="mb-3 mb-md-4 fs-5 border-bottom pb-2">Faça seu login aqui</h2>
+                    <form id="loginForm" novalidate>
+                        <div class="mb-3 mb-md-4">
+                            <label for="LogInEmail" class="form-label visually-hidden">Email</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light"><i class="bi bi-envelope"></i></span>
+                                <input type="email" class="form-control form-control-lg shadow-sm" name="email" id="LogInEmail" placeholder="Digite aqui seu email" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="LogInPassword" class="form-label visually-hidden">Senha</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light"><i class="bi bi-lock"></i></span>
+                                <input type="password" class="form-control form-control-lg shadow-sm" name="password" id="LogInPassword" placeholder="Digite aqui sua senha" required>
+                                <button class="btn btn-light" type="button" id="togglePassword" title="toggle the password visibility"><i class="bi bi-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div class="form-check text-start">
+                                <input type="checkbox" class="form-check-input" id="rememberMe">
+                                <label class="form-check-label" for="rememberMe">Lembrar-me</label>
+                            </div>
+                        </div>
+                    </form>
+                    <button class="btn btn-primary btn-lg w-100 mt-3 mt-md-4 shadow-sm fw-bold" id="logInUser">Entrar</button>
+                    <p class="mt-3 mt-md-4 mb-0">Não tem uma conta? <span id="toLogUp" class="fw-bold text-primary" role="button">Crie uma agora</span></p>
+                </div>
+
+                <div class="form-group p-3 p-md-4 p-lg-5 mt-3 mt-md-5 d-none" id="logIn">
+                    <h1 class="mb-3 mb-md-4 fw-bold fs-2">Seja bem vindo!</h1>
+                    <h2 class="mb-3 mb-md-4 fs-5 border-bottom pb-2">Crie sua conta aqui</h2>
+                    <form id="registerForm">
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <span class="input-group-text bg-light"><i class="bi bi-person"></i></span>
+                                <input type="text" class="form-control form-control-lg shadow-sm" name="name" id="CreateName" placeholder="Digite aqui seu nome completo" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="CreateEmail" class="form-label visually-hidden">Email</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light"><i class="bi bi-envelope"></i></span>
+                                <input type="email" class="form-control form-control-lg shadow-sm" name="email" id="CreateEmail" placeholder="Digite aqui seu email" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <span class="input-group-text bg-light"><i class="bi bi-at"></i></span>
+                                <input type="text" class="form-control form-control-lg shadow-sm" name="username" id="CreateUsername" placeholder="Digite aqui seu nome de usuário" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="CreatePassword" class="form-label visually-hidden">Senha</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light"><i class="bi bi-lock"></i></span>
+                                <input type="password" class="form-control form-control-lg shadow-sm" name="password" id="CreatePassword" placeholder="Digite aqui sua senha" required>
+                                <button class="btn btn-light" type="button" id="toggleCreatePassword" title="show the password"><i class="bi bi-eye"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                    <button class="btn btn-primary btn-lg w-100 mt-3 mt-md-4 shadow-sm fw-bold" id="createAccount">Criar conta</button>
+                    <p class="mt-3 mt-md-4 mb-0">Já tem uma conta? <span id="toLogIn" class="fw-bold text-primary" role="button">Entre aqui</span></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="module" src="../scripts/loginPage/main.js"></script>
+</body>
+</html>

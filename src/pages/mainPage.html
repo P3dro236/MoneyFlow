@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/base.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Página principal</title>
+</head>
+<body class="bg-darker">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid pe-5 ps-5 p-2">
+            <a class="navbar-brand fw-bold fs-2" href="#">MoneyFlow</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse fs-4 " id="navbarNav">
+                <ul class="navbar-nav me-auto p-4 d-flex align-items-center" >
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Página principal</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#">Objetivos Financeiros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Categorias</a>
+                    </li>
+                </ul>
+                <div class="d-flex justify-content-end align-items-center">
+                    <button class="btn btn-outline-light me-3 fs-4 border-danger text-danger" id="logoutBtn">Sair</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <div class="col-lg-3 mb-4">
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <h5 class="card-title text-center mb-3">Perfil</h5>
+                                <div class="text-center mb-3">
+                                    <img src="https://dummyimage.com/100" class="rounded-circle" alt="Foto do perfil">
+                                </div>
+                                <h6 class="card-subtitle mb-3 text-center" id="userName">@<span id="username"></span></h6>
+                            </div>
+                            <div class="col-6 d-flex flex-column justify-content-evenly">
+                                <button class="btn btn-lg btn-success" data-bs-toggle="modal" data-bs-target="#fundsModal">Adicionar fundos</button>
+                                <button class="btn btn-lg btn-primary" data-bs-toggle="modal" data-bs-target="#transactionModal">Adicionar despesa</button>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="d-flex flex-row align-items-center justify-content-between">
+                            <h3 class="card-title me-3">Resumo Financeiro Mensal</h3>
+                            <i class="bi bi-eye fs-1" id="hide"></i>
+                            <i class="bi bi-eye-slash fs-1 d-none" id="show"></i>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-md-4 mb-3">
+                                <div class="card bg-success text-white">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Receitas</h5>
+                                        <h2 class="card-text">R$ <span id="totalIn"></span></h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="card bg-danger text-white">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Despesas</h5>
+                                        <h2 class="card-text">R$ <span id="totalOut"></span></h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="card bg-primary text-white">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Saldo</h5>
+                                        <h2 class="card-text">R$ <span id="funds"></span></h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Últimas Transações</h3>
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover table-bordered">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th scope="col">Data</th>
+                                        <th scope="col">Descrição</th>
+                                        <th scope="col">Categoria</th>
+                                        <th scope="col">Valor</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="expensesTable">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal for adding funds/expenses -->
+    <div class="modal fade" id="transactionModal" tabindex="-1" aria-labelledby="transactionModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title" id="transactionModalLabel">Adicionar Transação</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="transactionForm">
+                        <div class="mb-3">
+                            <label for="transactionName" class="form-label">Nome da despesa</label>
+                            <input type="text" class="form-control bg-dark text-white" id="transactionName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="transactionAmount" class="form-label">Valor</label>
+                            <input type="number" class="form-control bg-dark text-white" id="transactionAmount" placeholder="R$" step="0.01" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="transactionCategory" class="form-label cursor-pointer">Categoria</label>
+                            <select class="form-select bg-dark text-white" id="transactionCategory">
+                                <option value="">Selecione o tipo</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer border-secondary">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="saveTransaction">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal for adding funds -->
+    <div class="modal fade" id="fundsModal" tabindex="-1" aria-labelledby="fundsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title" id="fundsModalLabel">Adicionar Fundos</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="fundsForm">
+                        <div class="mb-3">
+                            <label for="fundsDescription" class="form-label">Descrição</label>
+                            <select class="form-select bg-dark text-white" id="fundsCategory">
+                                <option value="" selected disabled>Selecione o tipo</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="fundsAmount" class="form-label">Valor</label>
+                            <input type="number" class="form-control bg-dark text-white" id="fundsAmount" placeholder="R$" step="0.01" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer border-secondary">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-success" id="saveFunds">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script type="module" src="../scripts/mainPage/main.js"></script>
+</body>
+</html>
