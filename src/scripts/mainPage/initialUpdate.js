@@ -4,9 +4,11 @@ import { updateTable } from './createTable.js';
 
 
 export const initialUpdate = async () =>{
-    updateUser();
-    updateFunds();
-    updateTable();
-    $("body").removeClass("loading");
+    setTimeout(() =>{
+        updateUser();
+        updateFunds();
+        updateTable();
+        $("body").removeClass("loading")
+    }, 100)
 
 }
