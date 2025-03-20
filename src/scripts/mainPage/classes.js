@@ -1,10 +1,11 @@
+const endpoint = "https://67dbbf2f1fd9e43fe475b2ec.mockapi.io/api/v1/"
 export class User{
     constructor(id){
         this.id = id;
     }
     async logInUser(){
-        const endpoint = `https://67dbbf2f1fd9e43fe475b2ec.mockapi.io/api/v1/logUser/${this.id}`;
-        const response = await fetch(endpoint)
+        const path = `logUser/${this.id}`
+        const response = await fetch(endpoint+path)
         const data = await response.json()
 
         this.name = data.name;
@@ -22,8 +23,8 @@ export class Expenses{
         this.userId = userId;
     }
     async getExpenses(){
-        const endpoint = `https://67dbbf2f1fd9e43fe475b2ec.mockapi.io/api/v1/expenses/`;
-        const response = await fetch(endpoint)
+        const path = `expenses/`
+        const response = await fetch(endpoint + path)
         const data = await response.json()
         return data;
     }

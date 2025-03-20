@@ -11,3 +11,16 @@ h1,h2,h3,h4,h5,h6{
 span{
     cursor: pointer;
 }
+.loading {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    animation: pulse 1.5s infinite;
+  }
+  
+  @keyframes pulse {
+    0% { opacity: 0.09; }
+    50% { opacity: 0.2; }
+    100% { opacity: 0.09; }
+  }
+  
