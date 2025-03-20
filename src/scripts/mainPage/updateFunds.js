@@ -1,7 +1,7 @@
-import {funds, totalIn, totalOut} from './getData.js'
+import { loggedUser } from "./getData.js";
 
 export const updateFunds = () =>{
-    $("#funds").append(funds);
-    $("#totalIn").append(totalIn);
-    $("#totalOut").append(totalOut);
+    $("#funds").text(loggedUser.funds);
+    $("#totalOut").text(loggedUser.monthlyExpenses);
+    $("#totalIn").text(loggedUser.monthlyEntries);
 }

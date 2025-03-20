@@ -1,7 +1,4 @@
-import {user} from './getData.js'
-
+import { loggedUser } from "./getData.js";
 export const updateUser = () =>{
-    $("#username").append(user.username);
-    // $("#name").append(user.name);
-    // $("#email").append(user.email);
+    $("#username").text(loggedUser.username);
 }

@@ -1,11 +1,13 @@
-import {updateTable} from './updateTable.js';
-import {updateFunds} from './updateFunds.js';
-import {updateUser} from './updateUser.js';
-import {updateOptions} from './updateOptions.js';
+import { updateUser } from './updateUser.js';
+import { updateFunds } from './updateFunds.js';
+import { updateTable } from './createTable.js';
 
-export const initialUpdate = () =>{
-    updateTable();  
-    updateFunds();
-    updateUser();
-    updateOptions();
+
+export const initialUpdate = async () =>{
+    setTimeout(() =>{
+        updateUser();
+        updateFunds();
+        updateTable();
+        $("body").removeClass("loading");
+    }, 300)
 }
