@@ -1,4 +1,3 @@
-const endpoint = "https://67dbbf2f1fd9e43fe475b2ec.mockapi.io/api/v1/"
 export class User{
     constructor(id){
         this.id = id;
